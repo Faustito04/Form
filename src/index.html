@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="../dist/output.css">
+</head>
+<body class="grid place-items-center">
+    <div class="flex flex-col w-[400px]">
+        <h1 id="titulo" class="text-3xl font-bold">Notas</h1>
+
+        <img id="estado" class="w-full" src="../assets/welcome.jpeg" alt="estado">
+
+        <label for="matematica">Nota Matemática</label>
+        <input type="number" class="border-b border-gray-300" onkeyup="onChange('matematica')" name="matematica" id="matematica">
+        <span id="error-matematica" style="color: red; display: none;">La nota tiene que estar entre 1 y 10</span>
+
+        <label for="lengua">Nota Lengua</label>
+        <input type="number" class="border-b border-gray-300" onkeyup="onChange('lengua')" name="lengua" id="lengua">
+        <span id="error-lengua" style="color: red; display: none;">La nota tiene que estar entre 1 y 10</span>
+
+        <label for="efsi">Nota EFSI</label>
+        <input type="number" class="border-b border-gray-300" onkeyup="onChange('efsi')" name="efsi" id="efsi">
+        <span id="error-efsi" style="color: red; display: none;">La nota tiene que estar entre 1 y 10</span>
+
+        <br>
+
+        <button onclick="sacarPromedio()">Sacar promedio</button>
+        <p>Promedio: <span id="promedio"></span></p>
+        <span id="error-promedio" style="color: red; display: none;">Todos los campos tienen que estar completos</span>
+
+        <button onclick="sacarMejorMateria()">Mejor materia</button>
+        <p>Mejor Materia: <span id="mejorMateria"></span></p>
+        <span id="error-mejorMateria" style="color: red; display: none;">Todos los campos tienen que estar completos</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
