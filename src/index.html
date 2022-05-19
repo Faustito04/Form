@@ -7,11 +7,11 @@
     <title>Formulario</title>
     <link rel="stylesheet" href="../dist/output.css">
 </head>
-<body class="grid place-items-center">
-    <div class="flex flex-col w-[400px]">
-        <h1 id="titulo" class="text-3xl font-bold">Notas</h1>
+<body class="grid place-items-center min-h-screen py-4">
+    <div class="flex flex-col w-[400px] border p-4 rounded-md shadow-md bg-slate-50">
+        <h1 id="titulo" class="text-3xl font-bold text-center text-blue-600">Notas</h1>
 
-        <img id="estado" class="w-full" src="../assets/welcome.jpeg" alt="estado">
+        <img id="estado" class="w-full my-4" src="../assets/welcome.jpeg" alt="estado">
 
         <label for="matematica">Nota Matemática</label>
         <input type="number" class="border-b border-gray-300" onkeyup="onChange('matematica')" name="matematica" id="matematica">
@@ -27,13 +27,18 @@
 
         <br>
 
-        <button onclick="sacarPromedio()">Sacar promedio</button>
-        <p>Promedio: <span id="promedio"></span></p>
+        <div class="flex flex-row items-center gap-4">
+            <button class="w-fit px-4 py-2 bg-blue-200 rounded-md" onclick="sacarPromedio()">Sacar promedio</button>
+            <span id="promedio"></span>
+        </div>
         <span id="error-promedio" style="color: red; display: none;">Todos los campos tienen que estar completos</span>
 
-        <button onclick="sacarMejorMateria()">Mejor materia</button>
-        <p>Mejor Materia: <span id="mejorMateria"></span></p>
+        <div class="flex flex-row items-center mt-4 gap-4">
+            <button class="w-fit px-4 py-2 bg-blue-200 rounded-md" onclick="sacarMejorMateria()">Mejor materia</button>
+            <span id="mejorMateria"></span>
+        </div>
         <span id="error-mejorMateria" style="color: red; display: none;">Todos los campos tienen que estar completos</span>
+        
     </div>
 
     <script src="script.js"></script>
