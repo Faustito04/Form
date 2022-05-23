@@ -12,16 +12,21 @@ const imagenes = {
 const onChange = (id) => {
     const inputElement = document.getElementById(id);
     const errorElement = document.getElementById(`error-${id}`);
-    const nota = inputElement.value === "" ? null : Number(inputElement.value);
+    const nota = inputElement.value === "" ? null : parseInt(inputElement.value);
 
     notas[id] = nota;
 
-    if (nota === null) {
+    if (isNaN(nota) || inputElement.value.length !== nota.toString().length) {
+        inputElement.style.color = "";
+        errorElement.style.display = "block";
+        errorElement.innerHTML = "La nota debe ser un numero";
+    } else if (nota === null) {
         inputElement.style.color = "";
         errorElement.style.display = "none";
     } else if (nota < 1 || nota > 10) {
         inputElement.style.color = "";
         errorElement.style.display = "block";
+        errorElement.innerHTML = "La nota debe estar entre 1 y 10";
     } else if (nota < 6) {
         inputElement.style.color = "red";
         errorElement.style.display = "none";
@@ -36,7 +41,7 @@ const sacarPromedio = () => {
     const errorElement = document.getElementById("error-promedio");
     const estadoElement = document.getElementById("estado");
 
-    if (Object.values(notas).every(val => val !== null)) {
+    if (Object.values(notas).every(val => val !== null && !isNaN(val) && val > 0 && val <= 10)) {
         errorElement.style.display = "none";
         const promedio = Math.round(Object.values(notas).reduce((acc, val) => acc + val) / Object.values(notas).length * 10) / 10;
         promedioElement.innerText = promedio;
@@ -56,7 +61,7 @@ const sacarMejorMateria = () => {
     const errorElement = document.getElementById(`error-mejorMateria`);
     const inputs = document.querySelectorAll('input');
 
-    if (Object.values(notas).every(val => val !== null)) {
+    if (Object.values(notas).every(val => val !== null && !isNaN(val) && val > 0 && val <= 10)) {
         errorElement.style.display = "none";
         const mejorMateria = Object.keys(notas).reduce((acc, val) => {
             return (notas[acc] > notas[val]) ? acc : val;
